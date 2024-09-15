@@ -1,0 +1,13 @@
+*~
+cshep.*
+!cshep.tex
+*.out
+*.aux
+*.nav
+*.toc
+*.vrb
+*.log
+*.snm
+*.pdf
+a.out
+build
