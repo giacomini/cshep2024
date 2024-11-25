@@ -37,8 +37,9 @@ auto make_vector(int N)
 int main()
 {
   std::cout << "sizeof(P1): " << sizeof(P1) << '\n';
-  int const N{1'000'000};
-  auto v1 = make_vector(N);
+  int const N{100'000'000};
+  auto const v = make_vector(N);
+  auto v1 = v;
   std::cout << "sorting a vector<P1> in " << benchmark([&] {
     std::sort(
       v1.begin(),
@@ -49,8 +50,8 @@ int main()
 
   std::cout << "sizeof(P2): " << sizeof(P2) << '\n';
   std::vector<P2> v2;
-  v2.reserve(v1.size());
-  std::transform(v1.begin(), v1.end(), std::back_inserter(v2), [](auto& p1) { return P2{p1.a, p1.c, p1.b}; });
+  v2.reserve(v.size());
+  std::transform(v.begin(), v.end(), std::back_inserter(v2), [](auto& p1) { return P2{p1.a, p1.c, p1.b}; });
   std::cout << "sorting a vector<P2> in " << benchmark([&] {
     std::sort(
       v1.begin(),
